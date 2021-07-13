@@ -3,13 +3,13 @@ import Funciones
 window=Tk()
 window.title("Calculadora")
 
-app_width=293
+app_width=293#     dimensiones de ventana
 app_height=300
 screen_width=window.winfo_screenwidth()
 screen_height=window.winfo_screenheight()
-app_posx=int(screen_width/2-app_width/2)
+app_posx=int(screen_width/2-app_width/2)#   centrar en pantalla
 app_posy=int(screen_height/2-app_height/2)
-window.geometry(f"{app_width}x{app_height}+{app_posx}+{app_posy}")# dimensiones de ventana
+window.geometry(f"{app_width}x{app_height}+{app_posx}+{app_posy}")
 
 entry_color="#B8C9F5"
 calc_color="#141E36"
@@ -27,37 +27,25 @@ txt=Entry(window,
         borderwidth=0,highlightthickness=0)
 
 txt.grid(columnspan=3,row=0,pady=10)
-btn=[[0]*4]*4
+btn=[[0]*4]*4#          crear matriz de botones
 frame=LabelFrame(window,background=btn_group_color,borderwidth=0,highlightthickness=0)
 frame.grid(column=1,row=1,pady=10,padx=6)
+
 for x in range(0,4):
     for y in range(0,4):
         tecla=""
         if(x==0 or x==1 or x==2):
-            if(y==0):
-                tecla=str(x+1)
-            if(y==1):
-                tecla=str(x+4)
-            if(y==2):
-                tecla=str(x+7)
+            range_={0:str(x+1),1:str(x+4),2:str(x+7)}#  | numeros posibles por columna
+            tecla=range_.get(y) or ""
         if(x==3):
-            if(y==0):
-                tecla="+"
-            if(y==1):
-                tecla="-"
-            if(y==2):
-                tecla="*"
-            if(y==3):
-                tecla="/"
+            operations={0:"+",1:"-",2:"*",3:"/"}#       | simbolos de la cuarta columna
+            tecla=operations.get(y) or ""
         if(y==3):
-            if(x==0):
-                tecla="0"
-            if(x==1):
-                tecla="."
-            if(x==2):
-                tecla="="
-        btn[x][y]=Button(frame,background=btn_color,
-                text=tecla,
+            special={0:"0",1:".",2:"=",3:"/"}#          | asignar ultima fila
+            tecla=special.get(x) or ""
+        btn[x][y]=Button(frame,
+                background=btn_color,
+                text=tecla,#                            | asignar simbolo al boton
                 command=lambda tecla=tecla: Funciones.clicked(tecla,txt),
                 width=2,height=1, font=("Arial Bold", 20),
                 borderwidth=0,highlightthickness=0)
