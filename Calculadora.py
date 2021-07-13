@@ -2,7 +2,15 @@ from tkinter import *
 import Funciones
 window=Tk()
 window.title("Calculadora")
-window.geometry("200x300")
+
+app_width=280
+app_height=300
+screen_width=window.winfo_screenwidth()
+screen_height=window.winfo_screenheight()
+app_posx=int(screen_width/2-app_width/2)
+app_posy=int(screen_height/2-app_height/2)
+window.geometry(f"{app_width}x{app_height}+{app_posx}+{app_posy}")# dimensiones de ventana
+
 window.configure(background="gray")
 txt=Entry(window,text="Escribe un numero",font=("Arial Bold", 15),width=15,state='disabled')
 txt.grid(columnspan=3,row=0,pady=10)
