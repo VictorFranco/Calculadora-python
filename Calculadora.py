@@ -4,7 +4,7 @@ window=Tk()
 window.title("Calculadora")
 
 app_width=293#     dimensiones de ventana
-app_height=300
+app_height=280
 screen_width=window.winfo_screenwidth()
 screen_height=window.winfo_screenheight()
 app_posx=int(screen_width/2-app_width/2)#   centrar en pantalla
@@ -13,23 +13,26 @@ window.geometry(f"{app_width}x{app_height}+{app_posx}+{app_posy}")
 
 entry_color="#B8C9F5"
 calc_color="#141E36"
+window_color="#293D6E"
 btn_color="#5D88F5"
 btn_group_color=calc_color
 hover_color=entry_color
 
-window.configure(background=calc_color)
+window.configure(background=window_color)
+frame=Frame(window,background=calc_color)
+frame.pack(fill=None,expand=False)
 
-txt=Entry(window,
+txt=Entry(frame,
         disabledbackground=entry_color,
         disabledforeground="black",
-        font=("Arial Bold", 15),
+        font=("Arial Bold",15),
         width=15,
         state='disabled',
         borderwidth=0,highlightthickness=0)
 
 txt.grid(columnspan=3,row=0,pady=10)
 btn=[[0]*4]*4#          crear matriz de botones
-frame=LabelFrame(window,background=btn_group_color,borderwidth=0,highlightthickness=0)
+frame=LabelFrame(frame,background=btn_group_color,borderwidth=0,highlightthickness=0)
 frame.grid(column=1,row=1,pady=10,padx=6)
 
 for x in range(0,4):
@@ -49,7 +52,7 @@ for x in range(0,4):
                 text=tecla,#                            | asignar simbolo al boton
                 activebackground=hover_color,
                 command=lambda tecla=tecla: Funciones.clicked(tecla,txt),
-                width=2,height=1, font=("Arial Bold", 20),
+                width=2,height=1,font=("Arial Bold",20),
                 borderwidth=0,highlightthickness=0)
         btn[x][y].grid(column=x,row=y,pady=6,padx=6)
 window.mainloop()
