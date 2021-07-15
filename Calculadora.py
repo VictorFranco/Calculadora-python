@@ -53,6 +53,7 @@ for x in range(0,4):
                 activebackground=hover_color,
                 command=lambda tecla=tecla: Funciones.clicked(tecla,txt),
                 width=2,height=1,font=("Arial Bold",20),
+                cursor="hand1",
                 borderwidth=0,highlightthickness=0)
         btn[x][y].grid(column=x,row=y,pady=6,padx=6)
 window.mainloop()
