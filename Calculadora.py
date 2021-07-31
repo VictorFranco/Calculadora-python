@@ -49,8 +49,10 @@ for x in range(0,4):
             tecla=special.get(x) or ""
         btn[x][y]=Button(frame,
                 background=btn_color,
+                foreground="#000",
                 text=tecla,#                            | asignar simbolo al boton
                 activebackground=hover_color,
+                activeforeground="#000",
                 command=lambda tecla=tecla: Funciones.clicked(tecla,txt),
                 width=2,height=1,font=("Arial Bold",20),
                 cursor="hand1",
