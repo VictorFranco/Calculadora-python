@@ -11,3 +11,6 @@ La generaci&oacute;n de sus botones fue hecha usando ciclos.
 ![img2](https://i.imgur.com/lPgxrR0.jpg "Operacion")
 
 ![img3](https://i.imgur.com/RM5KGEn.jpg "Resultado")
+
+## LICENSE
+[GPLv3.0](LICENSE)
